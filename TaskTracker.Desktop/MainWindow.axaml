@@ -1,0 +1,89 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TaskTracker.Desktop.MainWindow"
+        Title="Task Tracker"
+        Width="900"
+        Height="600"
+        MinWidth="750"
+        MinHeight="500">
+
+	<Grid Margin="24"
+          RowDefinitions="Auto,*,Auto">
+
+		<StackPanel Grid.Row="0" Margin="0,0,0,20">
+			<TextBlock Text="Task Tracker"
+                       FontSize="28"
+                       FontWeight="Bold" />
+
+			<TextBlock Text="Add tasks, update details, and track your progress."
+                       Margin="0,6,0,0" />
+		</StackPanel>
+
+		<Grid Grid.Row="1"
+              ColumnDefinitions="2*,3*">
+
+			<Grid Grid.Column="0"
+                  RowDefinitions="Auto,*"
+                  Margin="0,0,20,0">
+
+				<TextBlock x:Name="TaskCountText"
+                           Text="Tasks: 0"
+                           FontWeight="Bold"
+                           Margin="0,0,0,10" />
+
+				<ListBox x:Name="TaskList"
+                         Grid.Row="1"
+                         SelectionChanged="TaskList_SelectionChanged" />
+			</Grid>
+
+			<StackPanel Grid.Column="1" Spacing="10">
+
+				<TextBlock Text="Task title" />
+
+				<TextBox x:Name="TitleInput"
+                         Watermark="Enter a task title" />
+
+				<TextBlock Text="Description" />
+
+				<TextBox x:Name="DescriptionInput"
+                         Watermark="Enter task details"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Height="130" />
+
+				<WrapPanel>
+					<Button Content="Add Task"
+                            Click="AddTask_Click"
+                            Margin="0,0,8,8" />
+
+					<Button Content="Save Changes"
+                            Click="SaveChanges_Click"
+                            Margin="0,0,8,8" />
+
+					<Button Content="Clear Form"
+                            Click="ClearForm_Click"
+                            Margin="0,0,8,8" />
+				</WrapPanel>
+
+				<WrapPanel>
+					<Button Content="Toggle Complete"
+                            Click="ToggleComplete_Click"
+                            Margin="0,0,8,8" />
+
+					<Button Content="Delete Task"
+                            Click="DeleteTask_Click"
+                            Margin="0,0,8,8" />
+				</WrapPanel>
+
+				<TextBlock Text="Select a task to view or change its details."
+                           TextWrapping="Wrap" />
+			</StackPanel>
+		</Grid>
+
+		<TextBlock x:Name="StatusText"
+                   Grid.Row="2"
+                   Text="Ready"
+                   Margin="0,16,0,0"
+                   TextWrapping="Wrap" />
+	</Grid>
+</Window>
